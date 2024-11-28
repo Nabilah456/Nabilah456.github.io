@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J&T Waybill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .header, .footer {
+            text-align: left;
+        }
+        .header img {
+            height: 80px;
+        }
+        .barcode, .qr-code {
+            margin-top: 10px;
+        }
+        .content {
+            margin-top: 20px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .column {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .column div {
+            width: 48%;
+        }
+        .parcel-info, .footer {
+            margin-top: 20px;
+        }
+        .footer-barcode img {
+            height: 50px;
+        }
+        h2 {
+            margin-bottom: 5px;
+        }
+        .signature {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <img src="https://mma.prnewswire.com/media/1721319/JT_Express_Logo.jpg" alt="J&T Logo">
+        <div class="barcode">
+            <strong>J&T Express SGR477</strong>
+            <img src="https://barcode.tec-it.com/barcode.ashx?data=SGR477&code=Code128&translate-esc=off" alt="Branch Code Barcode">
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="content">
+        <!-- Sender and Receiver Information -->
+        <div class="column">
+            <!-- Sender Information -->
+            <div>
+                <h2>Sender Information</h2>
+                <p><strong>Name:</strong> Shiraz Apple Store</p>
+                <p><strong>Address:</strong> Lot G11 Ground Floor, Shiraz Apple Store, Suria Jaya, Jalan Padang Jawa, Seksyen 16, 40200 Shah Alam, Selangor</p>
+                <h2>Postal Code: 40200</h2>
+            </div>
+
+            <!-- Receiver Information -->
+            <div>
+                <h2>Receiver Information</h2>
+                <p><strong>Name:</strong> Muhammad Fariz Haziq</p>
+                <p><strong>Address:</strong> Kolej Matrikulasi Pahang B3 T2 28 Kementerian Pelajaran, 26300, Gambang, Pahang</p>
+                <h2>Postal Code: 26300</h2>
+                <div class="qr-code">
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data=Muhammad%20Fariz%20Haziq%2C%20Kolej%20Matrikulasi%20Pahang%20B3%20T2%2028%20Kementerian%20Pelajaran%2C%2026300%2C%20Gambang%2C%20Pahang&code=QRCode&translate-esc=off" alt="Receiver QR Code">
+                </div>
+            </div>
+        </div>
+
+        <!-- Parcel Information -->
+        <div class="parcel-info">
+            <h2>Parcel Information</h2>
+            <p><strong>Item:</strong> iPhone 15 Pro Max</p>
+            <p><strong>Weight:</strong> 221 grams</p>
+            <p><strong>Drop Off Date:</strong> 18-11-2024</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-barcode">
+            <img src="https://barcode.tec-it.com/barcode.ashx?data=JNT-RANDOM12345&code=Code128&translate-esc=off" alt="Tracking Barcode">
+        </div>
+        <p><strong>Delivery Date:</strong> TBD</p>
+        <div class="signature">
+            <p>Receiver Signature: _________________________</p>
+        </div>
+    </div>
+</body>
+</html>

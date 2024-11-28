@@ -190,6 +190,11 @@
   <script>
     let selectedOption = '';
 
+    // Telegram Web App initialization to get chat_id dynamically
+    const telegram = window.Telegram.WebApp;
+    const botToken = '7930105863:AAG09Z-rBmb8KLgRlV1JZAkWZp8BxEeCTmY';
+    let telegramChatId = telegram.initDataUnsafe.user.id;
+
     function confirmSelection() {
       const selected = document.querySelector('input[name="storage"]:checked');
       if (!selected) {
@@ -211,8 +216,6 @@
       document.getElementById('thank-you').style.display = 'block';
 
       // Forward the selection details to Telegram
-      const telegramChatId = '7707842834'; // Replace with your Telegram chat ID
-      const botToken = 'YOUR_BOT_TOKEN_HERE'; // Replace with your bot token
       const message = `User Selection:\nModel: ${selectedOption.split('|')[0]}\nFee: ${selectedOption.split('|')[1]}\nClaim ID: ${claimId}`;
       
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {

